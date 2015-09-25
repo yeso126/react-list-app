@@ -1,0 +1,12 @@
+.block {
+display: block;
+}
+.none {
+  display: none;
+}
+.default{
+  background: #e4e4e4
+}
+.success{
+  background: #45cca6
+}

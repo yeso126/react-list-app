@@ -9,10 +9,13 @@ var FeedList = React.createClass({
     var feedItems = this.props.items.map(function(item){
       return (
 
-        <FeedItem title={item.description} desc= {item.description} voteCount={item.voteCount}
-        ></FeedItem>
+        <FeedItem key={item.key}
+                  title={item.title}
+                  desc= {item.description}
+                  voteCount={item.voteCount}
+                  onVote={this.props.onVote}/>
       )
-    })
+    }.bind(this));
 
     return (
       <ul>

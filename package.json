@@ -9,6 +9,7 @@
   "author": "Yesid Ghisays @yeso126",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^3.10.1",
     "react": "^0.13.3"
   },
   "devDependencies": {
