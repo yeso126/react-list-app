@@ -1,7 +1,7 @@
 var React = require('react'),
-    Feed = require('./components/Feed')
+    Feed = require('./components/Feed.jsx')
 
 
-React.renderComponent(
+React.render(
   <Feed/>, document.getElementById('app')
 );

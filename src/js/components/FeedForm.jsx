@@ -1,7 +1,6 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
 
-var  = React.createClass({
+var FeedForm = React.createClass({
 
   render: function() {
     return (
@@ -17,4 +16,4 @@ var  = React.createClass({
 
 });
 
-module.exports = ;
+module.exports = FeedForm;

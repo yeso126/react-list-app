@@ -1,5 +1,7 @@
 var React = require('react');
-var PropTypes = React.PropTypes;
+var ShowAddButton = require('./ShowAddButton.jsx');
+var FeedForm = require('./FeedForm.jsx');
+var FeedList = require('./FeedList.jsx');
 
 var Feed = React.createClass({
 
