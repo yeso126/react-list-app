@@ -5,6 +5,8 @@ var FeedList = require('./FeedList.jsx');
 var _ =require('lodash');
 var Firebase = require('firebase')
 var ReactFireMixin = require('reactfire');
+var Paper = require('material-ui/lib/paper');
+
 
 var Feed = React.createClass({
 mixins: [ReactFireMixin],
@@ -61,7 +63,7 @@ componentDidMount: function() {
 
   render: function() {
     return (
-      <div>
+      <Paper zDepth={2}>
         <div>
           <ShowAddButton onToggleForm= {this.onToggleForm}
                          displayed= {this.state.formDisplayed}/>
@@ -70,7 +72,7 @@ componentDidMount: function() {
                   onNewItem={this.onNewItem}/>
         <FeedList items={this.state.items}
                   onVote={this.onVote}/>
-      </div>
+      </Paper>
     );
   }
 

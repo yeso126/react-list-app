@@ -1,4 +1,5 @@
 var React = require('react');
+var RaisedButton = require('material-ui/lib/raised-button');
 
 var ShowAddButton = React.createClass({
 
@@ -16,9 +17,10 @@ var ShowAddButton = React.createClass({
     }
 
     return (
-      <button onClick={this.props.onToggleForm}
-              className={ClassString}
-        >{buttonText}</button>
+      <RaisedButton onClick={this.props.onToggleForm}
+                    className={ClassString}
+                    label={buttonText}
+        />
     );
   }
 
