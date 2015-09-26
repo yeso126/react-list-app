@@ -25,14 +25,20 @@ componentDidMount: function() {
   var ref = new Firebase('https://react-list-app.firebaseio.com/feed');
   ref.on('value', function(snap){
     var items = [];
+    var sorted = [];
     snap.forEach(function(itemSnap){
       var item = itemSnap.val();
       item.key = itemSnap.key();
       items.push(item);
     });
+
+    sorted = _.sortBy(items, function (item){
+      return -item.voteCount;
+    });
+
     this.setState({
-      items: items
-    })
+      items: sorted
+    });
   }.bind(this));
 },
 
