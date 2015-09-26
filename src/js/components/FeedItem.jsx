@@ -16,15 +16,15 @@ var FeedItem = React.createClass({
 
   vote: function(newCount) {
     this.props.onVote({
-      key: this.props.key,
       title: this.props.title,
       description: this.props.desc,
-      voteCount: newCount
+      voteCount: newCount,
+      key: this.props.id
     });
   },
   render: function() {
     return (
-      <li key={this.props.key} >
+      <li key="this.props.key" >
         <span>{this.props.voteCount}</span>
         <h4>{this.props.title}</h4>
         <span>{this.props.desc}</span>

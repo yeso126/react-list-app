@@ -3,21 +3,39 @@ var ShowAddButton = require('./ShowAddButton.jsx');
 var FeedForm = require('./FeedForm.jsx');
 var FeedList = require('./FeedList.jsx');
 var _ =require('lodash');
-
+var Firebase = require('firebase')
+var ReactFireMixin = require('reactfire');
 
 var Feed = React.createClass({
+mixins: [ReactFireMixin],
 
 getInitialState: function() {
-  var FEED_ITEMS = [
-    {key: '1', title: 'Realtime data!', description: 'firebase is cool', voteCount: 49},
-    {key: '2', title: 'Javascript is fun', description: 'Lexacal scopin FTW', voteCount: 24},
-    {key: '3', title: 'Coffee makes you awake', description: 'drink responsible', voteCount: 15}
-  ];
-    return{
-      items: FEED_ITEMS,
-      formDisplayed: false
-    }
-  },
+      return{
+        items: [],
+        formDisplayed: false
+      }
+    },
+
+componentWillMount: function() {
+  var ref = new Firebase("https://react-list-app.firebaseio.com/feed");
+  this.bindAsArray(ref, "feed");
+},
+
+componentDidMount: function() {
+  var ref = new Firebase('https://react-list-app.firebaseio.com/feed');
+  ref.on('value', function(snap){
+    var items = [];
+    snap.forEach(function(itemSnap){
+      var item = itemSnap.val();
+      item.key = itemSnap.key();
+      items.push(item);
+    });
+    this.setState({
+      items: items
+    })
+  }.bind(this));
+},
+
 
   onToggleForm: function() {
     this.setState({
@@ -26,16 +44,13 @@ getInitialState: function() {
   },
 
   onNewItem: function(newItem) {
-    var newItems = this.state.items.concat([newItem]);
-    this.setState({
-      items: newItems,
-      formDisplayed: false,
-      key: this.state.items.lentgh
-    });
+  var ref = new Firebase('https://react-list-app.firebaseio.com/feed');
+  ref.push(newItem);
   },
 
   onVote: function(item) {
-    console.log(item);
+  var ref = new Firebase('https://react-list-app.firebaseio.com/feed').child(item.key);
+  ref.update(item);
   },
 
   render: function() {

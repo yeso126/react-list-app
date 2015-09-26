@@ -8,7 +8,7 @@ var FeedForm = React.createClass({
     var newItem = {
       title: React.findDOMNode(this.refs.title).value,
       description: React.findDOMNode(this.refs.desc).value,
-      voteCount: 0
+      voteCount: 0,
     };
 
     React.findDOMNode(this.refs.feedForm).reset();
